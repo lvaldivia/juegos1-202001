@@ -11,6 +11,7 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D body;
     private Animator animator;
     private bool canJump = false;
+    private float jumpForce = 12f;
     void Start()
     {
         //jumpButton = GameObject.find("JumpButton").GetComponent<Button>();
@@ -23,12 +24,17 @@ public class PlayerJump : MonoBehaviour
     }
 
     void makeJump() {
-        
+        if (canJump) {
+            canJump = false;
+            body.velocity = new Vector2(0.0f,jumpForce);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Mathf.Abs(body.velocity.y) == 0) {
+            canJump = true;
+        }
     }
 }
