@@ -13,12 +13,20 @@ public class PopupController : MonoBehaviour
 
     private GameObject controller;
     private GameController gameController;
-    void Start()
-    {
+
+    void Awake(){
         controller = GameObject.Find("GameController");
         gameController = controller.GetComponent<GameController>();
+    }
+
+    void Start()
+    {
         btnReturn.onClick.AddListener(()=>returnGame());
         btnExit.onClick.AddListener(()=>returnMenu());
+    }
+
+    private void OnEnable() {
+        txtScorePanel.text = gameController.getScore();
     }
 
     void returnGame(){

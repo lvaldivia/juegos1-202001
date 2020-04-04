@@ -49,6 +49,10 @@ public class GameController : MonoBehaviour
         btnStart.gameObject.SetActive(false);
     }
 
+    public string getScore(){
+        return scoreTime.ToString();
+    }
+
     void pauseGame() {
         popupPause.SetActive(true);
         Time.timeScale = 0f;

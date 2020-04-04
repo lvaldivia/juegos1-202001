@@ -12,6 +12,7 @@ public class PlayerJump : MonoBehaviour
     private Animator animator;
     private bool canJump = false;
     private float jumpForce = 12f;
+    
     void Start()
     {
         //jumpButton = GameObject.find("JumpButton").GetComponent<Button>();
@@ -26,7 +27,13 @@ public class PlayerJump : MonoBehaviour
     void makeJump() {
         if (canJump) {
             canJump = false;
-            body.velocity = new Vector2(0.0f,jumpForce);
+            float forwardForce = 1.0f;
+            if(transform.position.x<0){
+                forwardForce = 1.0f;
+            }else{
+                forwardForce = 0.0f;
+            }
+            body.velocity = new Vector2(forwardForce,jumpForce);
         }
     }
 
