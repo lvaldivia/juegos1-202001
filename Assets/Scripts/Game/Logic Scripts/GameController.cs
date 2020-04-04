@@ -41,7 +41,8 @@ public class GameController : MonoBehaviour
             }
         }
     }
-    void startGame() {
+        
+    public void startGame() {
         Time.timeScale = 1f;
         popupPause.SetActive(false);
         btnPause.gameObject.SetActive(true);

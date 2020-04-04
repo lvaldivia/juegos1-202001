@@ -10,23 +10,25 @@ public class PopupController : MonoBehaviour
     public Text txtScorePanel;
     public Button btnReturn;
     public Button btnExit;
+
+    private GameObject controller;
+    private GameController gameController;
     void Start()
     {
+        controller = GameObject.Find("GameController");
+        gameController = controller.GetComponent<GameController>();
         btnReturn.onClick.AddListener(()=>returnGame());
         btnExit.onClick.AddListener(()=>returnMenu());
     }
 
     void returnGame(){
-        gameObject.SetActive(false);
+        gameController.startGame();
     }
 
     void returnMenu(){
+        Time.timeScale = 1f;
+        btnReturn.onClick.RemoveAllListeners();
+        btnExit.onClick.RemoveAllListeners();
         SceneManager.LoadScene("Menu");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
